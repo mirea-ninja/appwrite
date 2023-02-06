@@ -361,6 +361,16 @@ return [ // Ordered by ABC.
         'beta' => false,
         'mock' => false,
     ],
+    'mirea' => [
+        'name' => 'mirea',
+        'developers' => 'https://t.me/mirea_ninja_chat/473603',
+        'icon' => 'icon-mirea',
+        'enabled' => true,
+        'sandbox' => false,
+        'form' => false,
+        'beta' => false,
+        'mock' => false,
+    ],
     // 'instagram' => [
     //     'name' => 'Instagram',
     //     'developers' => 'https://www.instagram.com/developer/',
