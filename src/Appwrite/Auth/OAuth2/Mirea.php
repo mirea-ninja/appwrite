@@ -41,7 +41,7 @@ class Mirea extends OAuth2
             'client_id' => $this->appID,
             'redirect_uri' => $this->callback,
             'response_type' => 'code',
-            'scope' => $this->getScopes(),
+            'scope' => \implode(' ', $this->getScopes()),
             'state' => \json_encode($this->state)
         ]);
     }
@@ -57,13 +57,14 @@ class Mirea extends OAuth2
             $this->tokens = \json_decode($this->request(
                 'POST',
                 'https://lks.mirea.ninja/oauth/token',
-                [],
+                ['Content-Type: application/x-www-form-urlencoded'],
                 \http_build_query([
                     'client_id' => $this->appID,
                     'redirect_uri' => $this->callback,
                     'client_secret' => $this->appSecret,
                     'grant_type' => 'authorization_code',
-                    'code' => $code
+                    'code' => $code,
+                    'scope' => \implode(' ', $this->getScopes()),
                 ])
             ), true);
         }
