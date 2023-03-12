@@ -23,7 +23,7 @@ class Filter extends Base
      *
      * @param int $maxValuesCount
      */
-    public function __construct(array $attributes = [], int $maxValuesCount = 100)
+    public function __construct(array $attributes = [], int $maxValuesCount = 1000)
     {
         foreach ($attributes as $attribute) {
             $this->schema[$attribute->getAttribute('key')] = $attribute->getArrayCopy();
