@@ -37,7 +37,7 @@ class Mirea extends OAuth2
      */
     public function getLoginURL(): string
     {
-        return 'https://lks.mirea.ninja/oauth/authorize?' . \http_build_query([
+        return 'https://auth-app.mirea.ru/oauth/authorize?' . \http_build_query([
             'client_id' => $this->appID,
             'redirect_uri' => $this->callback,
             'response_type' => 'code',
@@ -56,7 +56,7 @@ class Mirea extends OAuth2
         if (empty($this->tokens)) {
             $this->tokens = \json_decode($this->request(
                 'POST',
-                'https://lks.mirea.ninja/oauth/token',
+                'https://auth-app.mirea.ru/oauth/token',
                 ['Content-Type: application/x-www-form-urlencoded'],
                 \http_build_query([
                     'client_id' => $this->appID,
@@ -81,7 +81,7 @@ class Mirea extends OAuth2
     {
         $this->tokens = \json_decode($this->request(
             'POST',
-            'https://lks.mirea.ninja/oauth/token',
+            'https://auth-app.mirea.ru/oauth/token',
             [],
             \http_build_query([
                 'client_id' => $this->appID,
@@ -167,7 +167,7 @@ class Mirea extends OAuth2
     protected function getUser(string $accessToken)
     {
         if (empty($this->user)) {
-            $this->user = \json_decode($this->request('GET', 'https://lks.mirea.ninja/api/?action=getData&url=https://lk.mirea.ru/profile/', ['Authorization: Bearer ' . $accessToken]), true);
+            $this->user = \json_decode($this->request('GET', 'https://auth-app.mirea.ru/api/?action=getData&url=https://lk.mirea.ru/profile/', ['Authorization: Bearer ' . $accessToken]), true);
         }
 
         return $this->user;
